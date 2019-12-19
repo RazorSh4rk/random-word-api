@@ -6,7 +6,7 @@ from random import randint
 
 db = TinyDB('keys/api_keys.json')
 if(db.all() == []):
-    db.insert({'key' : 'jecgaa'})
+    db.insert({'key' : 'yecgaa'})
 
 app = Flask(__name__)
 app.secret_key = os.urandom(12)
