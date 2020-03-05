@@ -1,8 +1,8 @@
 # random-word-api
-python rest api to generate random words
+scala rest api to serve random words
 
 It's alive at https://random-word-api.herokuapp.com/
 
-To run, `pip install -r requirements.txt` then `python app.py`
+To run, `sbt run`
 
-Uses TinyDB and Flask
+Uses Cask

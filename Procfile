@@ -1,1 +1,1 @@
-web: gunicorn app:app --log-file=-
+web: target/universal/stage/bin/random-word-api

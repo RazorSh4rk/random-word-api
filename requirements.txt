@@ -1,4 +1,0 @@
-Flask
-flask-cors
-tinydb
-gunicorn
