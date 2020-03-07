@@ -41,14 +41,13 @@ object Main extends cask.MainRoutes {
 
   @cask.get("/word")
   def getWord(number: Int = 1, swear: Int = 0) = {
+    val n = if(number < 1001) number else 1000
     val r = new Random
     var w = words.as[List[String]]
     if(swear == 1)
       w = w:::swearWords.as[List[String]]
     val ret = List
-      .tabulate(number)(el=>el)
-      .map(_ => r.between(0, w.length))
-      .map(el => w(el))
+      .tabulate(n)( el=> w(r.between(0, w.length - 1)) )
     
     cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
   }
