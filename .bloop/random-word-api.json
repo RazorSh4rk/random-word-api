@@ -1,5 +1,5 @@
 {
-    "version": "1.1.2",
+    "version": "1.4.0",
     "project": {
         "name": "random-word-api",
         "directory": "/home/razor/projects/random-word-api",
@@ -18,9 +18,9 @@
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-implicits_2.13/0.9.8/upickle-implicits_2.13-0.9.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/datatype/jackson-datatype-jdk8/2.10.1/jackson-datatype-jdk8-2.10.1.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/cask_2.13/0.5.6/cask_2.13-0.5.6.jar",
+            "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.1/scala-reflect-2.13.1.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/castor_2.13/0.1.1/castor_2.13-0.1.1.jar",
-            "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/ujson_2.13/0.9.8/ujson_2.13-0.9.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/fansi_2.13/0.2.8/fansi_2.13-0.2.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jboss/xnio/xnio-api/3.3.8.Final/xnio-api-3.3.8.Final.jar",
@@ -28,6 +28,7 @@
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.1/scala-library-2.13.1.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/pprint_2.13/0.5.8/pprint_2.13-0.5.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1.jar",
+            "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/net/debasishg/redisclient_2.13/3.20/redisclient_2.13-3.20.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/java-websocket/Java-WebSocket/1.4.0/Java-WebSocket-1.4.0.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jboss/xnio/xnio-nio/3.3.8.Final/xnio-nio-3.3.8.Final.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/typesafe/play/play-functional_2.13/2.8.1/play-functional_2.13-2.8.1.jar",
@@ -39,6 +40,7 @@
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upickle-core_2.13/0.9.8/upickle-core_2.13-0.9.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/io/undertow/undertow-core/2.0.13.Final/undertow-core-2.0.13.Final.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/jboss/logging/jboss-logging/3.3.2.Final/jboss-logging-3.3.2.Final.jar",
+            "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.28/slf4j-api-1.7.28.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/sourcecode_2.13/0.2.0/sourcecode_2.13-0.2.0.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/upack_2.13/0.9.8/upack_2.13-0.9.8.jar",
             "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/joda-time/joda-time/2.10.5/joda-time-2.10.5.jar",
@@ -123,7 +125,7 @@
             "config": {
                 "home": "/usr/lib/jvm/java-11-openjdk",
                 "options": [
-                    
+                    "-Duser.dir=/home/razor/projects/random-word-api"
                 ]
             },
             "mainClass": [
@@ -201,6 +203,23 @@
                     ]
                 },
                 {
+                    "organization": "org.apache.commons",
+                    "name": "commons-pool2",
+                    "version": "2.7.0",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "commons-pool2",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0.jar"
+                        },
+                        {
+                            "name": "commons-pool2",
+                            "classifier": "sources",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/apache/commons/commons-pool2/2.7.0/commons-pool2-2.7.0-sources.jar"
+                        }
+                    ]
+                },
+                {
                     "organization": "org.scala-lang",
                     "name": "scala-reflect",
                     "version": "2.13.1",
@@ -231,23 +250,6 @@
                             "name": "castor_2.13",
                             "classifier": "sources",
                             "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/lihaoyi/castor_2.13/0.1.1/castor_2.13-0.1.1-sources.jar"
-                        }
-                    ]
-                },
-                {
-                    "organization": "org.slf4j",
-                    "name": "slf4j-api",
-                    "version": "1.7.25",
-                    "configurations": "default",
-                    "artifacts": [
-                        {
-                            "name": "slf4j-api",
-                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25.jar"
-                        },
-                        {
-                            "name": "slf4j-api",
-                            "classifier": "sources",
-                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.25/slf4j-api-1.7.25-sources.jar"
                         }
                     ]
                 },
@@ -367,6 +369,23 @@
                             "name": "jackson-core",
                             "classifier": "sources",
                             "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1-sources.jar"
+                        }
+                    ]
+                },
+                {
+                    "organization": "net.debasishg",
+                    "name": "redisclient_2.13",
+                    "version": "3.20",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "redisclient_2.13",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/net/debasishg/redisclient_2.13/3.20/redisclient_2.13-3.20.jar"
+                        },
+                        {
+                            "name": "redisclient_2.13",
+                            "classifier": "sources",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/net/debasishg/redisclient_2.13/3.20/redisclient_2.13-3.20-sources.jar"
                         }
                     ]
                 },
@@ -558,6 +577,23 @@
                     ]
                 },
                 {
+                    "organization": "org.slf4j",
+                    "name": "slf4j-api",
+                    "version": "1.7.28",
+                    "configurations": "default",
+                    "artifacts": [
+                        {
+                            "name": "slf4j-api",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.28/slf4j-api-1.7.28.jar"
+                        },
+                        {
+                            "name": "slf4j-api",
+                            "classifier": "sources",
+                            "path": "/home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/slf4j/slf4j-api/1.7.28/slf4j-api-1.7.28-sources.jar"
+                        }
+                    ]
+                },
+                {
                     "organization": "com.lihaoyi",
                     "name": "sourcecode_2.13",
                     "version": "0.2.0",
@@ -643,6 +679,9 @@
                     ]
                 }
             ]
-        }
+        },
+        "tags": [
+            "library"
+        ]
     }
 }

@@ -1,0 +1,9 @@
+[0m[[0m[31merror[0m] [0m[0m/home/razor/projects/random-word-api/src/main/scala/Main.scala:39:21: value remote_addr is not a member of cask.Request[0m
+[0m[[0m[31merror[0m] [0m[0m    println(request.remote_addr)[0m
+[0m[[0m[31merror[0m] [0m[0m                    ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/razor/projects/random-word-api/src/main/scala/Main.scala:38:7: missing argument list for method getAll$default$2 in object Main[0m
+[0m[[0m[31merror[0m] [0m[0mUnapplied methods are only converted to functions when a function type is expected.[0m
+[0m[[0m[31merror[0m] [0m[0mYou can make this conversion explicit by writing `getAll$default$2 _` or `getAll$default$2(_)` instead of `getAll$default$2`.[0m
+[0m[[0m[31merror[0m] [0m[0m  def getAll(request: cask.Request)(swear: Int = 0) = {[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
+[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m

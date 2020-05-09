@@ -1,0 +1,1 @@
+["sbt.Task[scala.collection.immutable.Map[java.lang.String, scala.collection.Seq[scala.Tuple2[java.nio.file.Path, sbt.nio.FileStamp]]]]",{"2.13.1":{"hashes":[["/home/razor/projects/random-word-api/src/main/scala/Main.scala","9a05bf660f6e640d8443f888122b4adc63f1e711"]],"lastModifiedTimes":[]}}]

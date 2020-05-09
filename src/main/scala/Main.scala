@@ -3,16 +3,20 @@ import play.api.libs.json._
 import scala.io.Source
 import scala.util.Random
 import scala.util.Properties
+import com.redis._
+import java.net.URI
 
 object Main extends cask.MainRoutes {
-  override def port: Int = 
+  override val port: Int = 
     Properties.envOrElse("PORT", "9001").toInt
 
-  override def host: String = 
+  override val host: String = 
     Properties.envOrElse("HOST", "0.0.0.0")
-  
-  println("Starting on " + port)
 
+  val redisUrl = 
+    URI.create(Properties.envOrElse("REDIS_URL", "http://localhost:6379"))
+  val redisConnection = new RedisClient(redisUrl)
+ 
   val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
   val swearWords = Json.parse(Source.fromFile("swear.json").getLines().mkString)
   val headers = Seq(
@@ -24,7 +28,6 @@ object Main extends cask.MainRoutes {
   def redir() = {
     cask.Redirect("/home")
   }
-
 
   @cask.staticFiles("/home")
   def index() = {

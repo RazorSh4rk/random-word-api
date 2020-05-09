@@ -53,3 +53,252 @@ INFO  shutting down Metals
 No more data in the client stdin, exiting...
 No more data in the server stdin, exiting...
 No more data in the server stdin, exiting...
+INFO  started: Metals version 0.8.4 in workspace '/home/razor/projects/random-word-api'
+INFO  time: initialize in 1.22s
+Starting the bsp launcher for bloop...
+Opening a bsp server connection with 'bsp --protocol local --socket /tmp/bsp-launcher2358238165716274521/bsp.socket'...
+Waiting for the bsp connection to come up...
+INFO  skipping build import with status 'Installed'
+WARN  no build target for: /home/razor/projects/random-word-api/src/main/scala/Main.scala
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+error: The command bsp --protocol local --socket /tmp/bsp-launcher2358238165716274521/bsp.socket returned with an error
+> 
+error: Trying a tcp-based connection to the server instead...
+Opening a bsp server connection with 'bsp --protocol tcp --port 20108'...
+Waiting for the bsp connection to come up...
+error: The command bsp --protocol tcp --port 20108 returned with an error
+> 
+error: The launcher failed to establish a bsp connection, aborting...
+ERROR Failed to connect with build server, no functionality will work.
+java.lang.RuntimeException: The server did not start, got FailedToOpenBspConnection
+	at bloop.launcher.LauncherMain.failPromise$1(Launcher.scala:95)
+	at bloop.launcher.LauncherMain.runLauncher(Launcher.scala:122)
+	at scala.meta.internal.metals.BloopServers$$anon$1.run(BloopServers.scala:104)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.lang.Thread.run(Thread.java:834)
+
+INFO  running '/usr/lib/jvm/java-11-openjdk/bin/java -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar /tmp/metals15093590071907868348/sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+INFO  [info] Loading settings for project random-word-api-build from metals.sbt,build.sbt ...
+INFO  [info] Loading project definition from /home/razor/projects/random-word-api/project
+WARN  no build target for: /home/razor/projects/random-word-api/src/main/scala/Main.scala
+INFO  no build target: using presentation compiler with only scala-library
+INFO  [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+INFO  skipping build import with status 'Started'
+INFO  [info] Loading settings for project random-word-api from build.sbt ...
+INFO  [info] Set current project to random-word-api (in build file:/home/razor/projects/random-word-api/)
+INFO  [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+INFO  [warn] There may be incompatibilities among your library dependencies; run 'evicted' to see detailed eviction warnings.
+INFO  [success] Generated .bloop/random-word-api-test.json
+INFO  [success] Generated .bloop/random-word-api.json
+INFO  [success] Total time: 9 s, completed May 6, 2020, 4:44:20 PM
+INFO  build tool exit: 0
+INFO  time: ran 'sbt bloopInstall' in 33s
+Starting the bsp launcher for bloop...
+Opening a bsp server connection with 'bsp --protocol local --socket /tmp/bsp-launcher17410645886297727479/bsp.socket'...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+Waiting for the bsp connection to come up...
+[0m[32m[D][0m Loading workspace settings from bloop.settings.json
+[0m[32m[D][0m Loading 2 projects from '/home/razor/projects/random-word-api/.bloop'...
+[0m[32m[D][0m Loading project from '/home/razor/projects/random-word-api/.bloop/random-word-api.json'
+[0m[32m[D][0m Loading project from '/home/razor/projects/random-word-api/.bloop/random-word-api-test.json'
+[0m[32m[D][0m Cache miss for scala instance org.scala-lang:scala-compiler:2.13.1.
+[0m[32m[D][0m   => /home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/jline/jline/2.14.6/jline-2.14.6.jar
+[0m[32m[D][0m   => /home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.12/jansi-1.12.jar
+[0m[32m[D][0m   => /home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.13.1/scala-compiler-2.13.1.jar
+[0m[32m[D][0m   => /home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.1/scala-library-2.13.1.jar
+[0m[32m[D][0m   => /home/razor/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-reflect/2.13.1/scala-reflect-2.13.1.jar
+[0m[32m[D][0m Resolving org.scalameta:semanticdb-scalac_2.13.1:4.3.0
+[0m[32m[D][0m Configured SemanticDB in projects 'random-word-api', 'random-word-api-test'
+[0m[32m[D][0m Missing analysis file for project 'random-word-api'
+[0m[32m[D][0m Missing analysis file for project 'random-word-api-test'
+[0m[32m[D][0m Waiting for a connection at local:///tmp/bsp-launcher17410645886297727479/bsp.socket...
+The server is listening for incoming connections at local:///tmp/bsp-launcher17410645886297727479/bsp.socket...
+Starting thread that pumps stdin and redirects it to the bsp server...
+Starting thread that pumps server stdout and redirects it to the client stdout...
+INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at /home/razor/.cache/metals/bsp.trace.json
+INFO  time: connected to build server in 6.58s
+INFO  Connected to Build server v1.4.0-RC1-190-ef7d8dba
+INFO  time: imported build in 0.13s
+WARN  Could not find java sources in None. Java symbols will not be available.
+INFO  time: indexed workspace in 0.93s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 11s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.2s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.12s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.19s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.27s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.47s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.35s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.3s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.29s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.24s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.35s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.98s
+May 06, 2020 4:48:01 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+May 06, 2020 4:48:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: assertion failed: bad position: [499:483]
+java.lang.AssertionError: assertion failed: bad position: [499:483]
+	at scala.reflect.internal.util.Position$.validate(Position.scala:41)
+	at scala.reflect.internal.util.Position$.range(Position.scala:58)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart(Position.scala:220)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart$(Position.scala:135)
+	at scala.reflect.internal.util.Position.withStart(Position.scala:19)
+	at scala.meta.internal.pc.CompletionProvider.editRange$lzycompute$1(CompletionProvider.scala:337)
+	at scala.meta.internal.pc.CompletionProvider.editRange$2(CompletionProvider.scala:336)
+	at scala.meta.internal.pc.CompletionProvider.expected$1(CompletionProvider.scala:345)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:440)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:53)
+
+May 06, 2020 4:48:01 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+May 06, 2020 4:48:01 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: assertion failed: bad position: [501:485]
+java.lang.AssertionError: assertion failed: bad position: [501:485]
+	at scala.reflect.internal.util.Position$.validate(Position.scala:41)
+	at scala.reflect.internal.util.Position$.range(Position.scala:58)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart(Position.scala:220)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart$(Position.scala:135)
+	at scala.reflect.internal.util.Position.withStart(Position.scala:19)
+	at scala.meta.internal.pc.CompletionProvider.editRange$lzycompute$1(CompletionProvider.scala:337)
+	at scala.meta.internal.pc.CompletionProvider.editRange$2(CompletionProvider.scala:336)
+	at scala.meta.internal.pc.CompletionProvider.expected$1(CompletionProvider.scala:345)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:440)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:53)
+
+May 06, 2020 4:48:02 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+May 06, 2020 4:48:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: assertion failed: bad position: [502:486]
+java.lang.AssertionError: assertion failed: bad position: [502:486]
+	at scala.reflect.internal.util.Position$.validate(Position.scala:41)
+	at scala.reflect.internal.util.Position$.range(Position.scala:58)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart(Position.scala:220)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart$(Position.scala:135)
+	at scala.reflect.internal.util.Position.withStart(Position.scala:19)
+	at scala.meta.internal.pc.CompletionProvider.editRange$lzycompute$1(CompletionProvider.scala:337)
+	at scala.meta.internal.pc.CompletionProvider.editRange$2(CompletionProvider.scala:336)
+	at scala.meta.internal.pc.CompletionProvider.expected$1(CompletionProvider.scala:345)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:440)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:53)
+
+May 06, 2020 4:48:02 PM scala.meta.internal.pc.CompilerAccess retryWithCleanCompiler
+INFO: compiler crashed due to an error in the Scala compiler, retrying with new compiler instance.
+May 06, 2020 4:48:02 PM scala.meta.internal.pc.CompilerAccess handleError
+SEVERE: assertion failed: bad position: [504:488]
+java.lang.AssertionError: assertion failed: bad position: [504:488]
+	at scala.reflect.internal.util.Position$.validate(Position.scala:41)
+	at scala.reflect.internal.util.Position$.range(Position.scala:58)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart(Position.scala:220)
+	at scala.reflect.internal.util.InternalPositionImpl.withStart$(Position.scala:135)
+	at scala.reflect.internal.util.Position.withStart(Position.scala:19)
+	at scala.meta.internal.pc.CompletionProvider.editRange$lzycompute$1(CompletionProvider.scala:337)
+	at scala.meta.internal.pc.CompletionProvider.editRange$2(CompletionProvider.scala:336)
+	at scala.meta.internal.pc.CompletionProvider.expected$1(CompletionProvider.scala:345)
+	at scala.meta.internal.pc.CompletionProvider.safeCompletionsAt(CompletionProvider.scala:440)
+	at scala.meta.internal.pc.CompletionProvider.completions(CompletionProvider.scala:53)
+
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.32s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.25s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.35s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.23s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.26s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.96s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.39s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.34s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.27s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 82ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 47ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 74ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 75ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 52ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 67ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 28ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 65ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 33ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 74ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 44ms
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.44s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.4s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.29s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.27s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.34s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.3s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.28s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.26s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.44s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 0.99s
+May 06, 2020 5:04:39 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.25s
+May 06, 2020 5:05:07 PM org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFO: Unsupported notification method: $/setTraceNotification
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.36s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.43s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.14s
+INFO  compiling random-word-api (1 scala source)
+INFO  time: compiled random-word-api in 1.03s
+INFO  shutting down Metals
+No more data in the client stdin, exiting...
+No more data in the server stdin, exiting...
+No more data in the server stdin, exiting...

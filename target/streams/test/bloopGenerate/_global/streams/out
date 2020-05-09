@@ -1,0 +1,4 @@
+[debug] [random-word-api-test] Classpath dependencies List()
+[debug] [random-word-api-test] Dependencies from configurations List(random-word-api)
+[debug] Bloop wrote the configuration of project 'random-word-api-test' to '/home/razor/projects/random-word-api/.bloop/random-word-api-test.json'
+[success] Generated .bloop/random-word-api-test.json

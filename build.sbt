@@ -6,5 +6,6 @@ version := "1.0"
 
 enablePlugins(JavaAppPackaging)
 
-libraryDependencies += "com.typesafe.play" %% "play-json" % "2.8.1"
-libraryDependencies += "com.lihaoyi" %% "cask" % "0.5.6"
+libraryDependencies ++= Seq("com.typesafe.play" %% "play-json" % "2.8.1",
+"com.lihaoyi" %% "cask" % "0.5.6",
+"net.debasishg" %% "redisclient" % "3.20")
