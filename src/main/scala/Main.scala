@@ -39,7 +39,7 @@ object Main extends cask.MainRoutes {
     if(swear == 0) 
       cask.Response(Json.stringify(words), headers = headers)
     else 
-      cask.Response(Json.stringify(Json.toJson(words.as[List[String]])), headers = headers)
+      cask.Response(Json.stringify( Json.toJson( words.as[List[String]]:::(swearWords.as[List[String]]) ) ) , headers = headers)
   }
 
   @cask.get("/word")
