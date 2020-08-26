@@ -3,7 +3,6 @@ import play.api.libs.json._
 import scala.io.Source
 import scala.util.Random
 import scala.util.Properties
-import com.redis._
 import java.net.URI
 
 object Main extends cask.MainRoutes {
