@@ -11,10 +11,6 @@ object Main extends cask.MainRoutes {
 
   override val host: String = 
     Properties.envOrElse("HOST", "0.0.0.0")
-
-  val redisUrl = 
-    URI.create(Properties.envOrElse("REDIS_URL", "http://localhost:6379"))
-  val redisConnection = new RedisClient(redisUrl)
  
   val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
   val swearWords = Json.parse(Source.fromFile("swear.json").getLines().mkString)
