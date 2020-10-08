@@ -1,4 +1,3 @@
-
 import play.api.libs.json._
 import scala.io.Source
 import scala.util.Random
@@ -50,4 +49,3 @@ object Main extends cask.MainRoutes {
 
   initialize()
 }
-
