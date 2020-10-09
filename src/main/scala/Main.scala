@@ -62,7 +62,7 @@ object Main extends cask.MainRoutes {
   @cask.get("/word")
   def getWord(req: cask.Request, number: Int = 1, swear: Int = 0) = {
   	val IP = req.exchange.getSourceAddress.toString
-  	if(checkRateLimit(IP) && number != 500 && swear != 0){
+  	if(checkRateLimit(IP)){
 	    val r = new Random
 	    var w = words.as[List[String]]
 	    if(swear == 1)
