@@ -14,7 +14,6 @@ object Main extends cask.MainRoutes {
 
   val redisUrl = 
     URI.create(Properties.envOrElse("REDIS_URL", "http://localhost:6379"))
-  val redisConnection = new RedisClient(redisUrl)
  
   val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
   val swearWords = Json.parse(Source.fromFile("swear.json").getLines().mkString)
@@ -24,6 +23,7 @@ object Main extends cask.MainRoutes {
   )
 
   val checkRateLimit = (IP: String) => {
+    val redisConnection = new RedisClient(redisUrl)
   	redisConnection.get(IP) match {
   		case None => {
   				redisConnection.set(IP, "limited")
