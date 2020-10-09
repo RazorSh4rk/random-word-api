@@ -1,7 +1,7 @@
 # random-word-api
 A Scala rest API to serve random words
 
-It's alive at [https://https://random-word-api.herokuapp.com/](here) and [https://https://random-word-api2.herokuapp.com/](here)
+It's alive at [here](https://https://random-word-api.herokuapp.com/) and [here](https://https://random-word-api.herokuapp.com/)
 
 ## Let's get straight to the point - How do I make it run?
 Use `sbt run`!
