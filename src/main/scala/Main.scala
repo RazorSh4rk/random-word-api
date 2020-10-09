@@ -27,7 +27,7 @@ object Main extends cask.MainRoutes {
   val checkRateLimit = (IP: String) => {
   	redisConnection.get(IP) match {
   		case None => {
-  				redisConnection.set(IP, 1)
+  				redisConnection.set(IP, "limited")
   				redisConnection.expire(IP, 5)
   				true
   			}
