@@ -32,6 +32,11 @@
         .text{
             width: 70%;
             margin: auto;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .default {
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         input{
@@ -57,18 +62,18 @@
 
         <hr /> 
 
-        <p>
-            send a GET request to
+        <p class="default">
+            Send a GET request to <br />
+            (where number = number of words returned.)
             <p class="url">/word?number=10</p>
-            where number = number of words returned.
         </p>
 
-        <p>
+        <p class="default">
             If you want all the stored words: 
             <p class="url">/all</p>
         </p>
 
-        <p>
+        <p class="default">
 			You can toggle swear words on/off (0/1) with the filter
 			<p class="url">/?swear=0</p>
         </p>
