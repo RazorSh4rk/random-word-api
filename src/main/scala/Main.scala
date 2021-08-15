@@ -81,7 +81,7 @@ object Main extends cask.MainRoutes {
   @cask.get("/redis_dump")
   def redisDump(pass: String) = {
   	val _pass = scala.util.Properties.envOrElse(pass, "")
-  	if(pass != "") {
+  	if(pass != "" && pass == _pass) {
   		val redisConnection = new RedisClient(redisUrl)
   		val keys: List[String] = redisConnection.keys("*") match {
   			case None => List()
