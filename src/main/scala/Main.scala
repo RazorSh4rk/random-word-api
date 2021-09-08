@@ -80,7 +80,7 @@ object Main extends cask.MainRoutes {
   // endpoint to check redis entries because i cant do that in heroku
   @cask.get("/redis_dump")
   def redisDump(pass: String) = {
-  	val _pass = scala.util.Properties.envOrElse(pass, "")
+  	val _pass = scala.util.Properties.envOrElse("PASS", "")
   	if(pass != "" && pass == _pass) {
   		val redisConnection = new RedisClient(redisUrl)
   		val keys: List[String] = redisConnection.keys("*") match {
