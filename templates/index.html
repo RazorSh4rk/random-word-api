@@ -1,84 +1,105 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Random word API</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
-        body{
-            background: #223;
-            color: white;
-            font-size: 110%;
-            line-height: 5vh;
-        }
+      body {
+        background: #223;
+        color: white;
+        font-size: 110%;
+        line-height: 5vh;
+      }
+      .header {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 2px 0;
+      }
+      .url {
+        padding-top: 3vh;
+        padding-bottom: 3vh;
+        width: 10wv;
+        margin: auto;
+        background: #334;
+        color: white;
+      }
 
-        .url {
-            padding-top: 3vh;
-            padding-bottom: 3vh;
-            width: 10wv;
-            margin: auto;
-            background: #334;
-            color: white;
-        }
+      .main {
+        width: 90vw;
+        margin: auto;
+        text-align: center;
+      }
 
-        .main {
-            width: 90vw;
-            margin: auto;
-            text-align: center;
-        }
+      .text {
+        width: 70%;
+        margin: auto;
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-        .text{
-            width: 70%;
-            margin: auto;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+      .default {
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-        .default {
-            font-family: Arial, Helvetica, sans-serif;
-        }
+      input {
+        padding: 0.5vw;
+        border: 0px;
+        color: white;
+        background: #343;
+        border-radius: 5px;
+      }
 
-        input{
-            padding: 0.5vw;
-            border: 0px;
-            color: white;
-            background: #343;
-            border-radius: 5px;
-        }
+      footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="main">
-        <p class="text">
-            Collection of random words I spent way too long scraping from websites. I didn't 
-            find any random word API that was just a request. You can get the
-            <a href="https://github.com/RazorSh4rk/random-word-api">source</a> and host it yourself if you want. 
-            It is now running on a hobby dyno, so it should be up quite reliably.
+      <h2 class="header">Random Word API</h2>
+      <p class="text">
+        Collection of random words I spent way too long scraping from websites.
+        I didn't find any random word API that was just a request. You can get
+        the
+        <a href="https://github.com/RazorSh4rk/random-word-api">source</a> and
+        host it yourself if you want. It is now running on a hobby dyno, so it
+        should be up quite reliably.
 
-            <a href="https://choosealicense.com/licenses/wtfpl/#">Runs under the DWTFYW license.</a>
-        </p>
+        <a href="https://choosealicense.com/licenses/wtfpl/#"
+          >Runs under the DWTFYW license.</a
+        >
+      </p>
+      <p class="default">
+        Send a GET request to <br />
+        (where number = number of words returned.)
+      </p>
 
-        <hr /> 
+      <p class="url">https://random-word-api.herokuapp.com/word?number=10</p>
 
-        <p class="default">
-            Send a GET request to <br />
-            (where number = number of words returned.)
-            <p class="url">/word?number=10</p>
-        </p>
+      <p class="default">
+        If you want all the stored words: <br />Returns all words
+      </p>
 
-        <p class="default">
-            If you want all the stored words: 
-            <p class="url">/all</p>
-        </p>
+      <p class="url">https://random-word-api.herokuapp.com/all</p>
 
-        <p class="default">
-			You can toggle swear words on/off (0/1) with the filter
-			<p class="url">/?swear=0</p>
-        </p>
+      <p class="default">
+        You can toggle swear words on/off (1/0) with the filter <br />
+        0 = off , 1 = on
+      </p>
+
+      <p class="url">
+        https://random-word-api.herokuapp.com/word?number=10&swear=0
+      </p>
+
+      <footer>
+        Copyright &copy;&nbsp;
+        <a href="https://github.com/RazorSh4rk"> RazorSh4rk</a>
+      </footer>
     </div>
-</body>
-
+  </body>
 </html>
