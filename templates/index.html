@@ -78,7 +78,19 @@
 			You can toggle swear words on/off (0/1) with the filter
 			<p class="url">/?swear=0</p>
         </p>
+
+        <p class="default">
+			You can choose other languages with the option
+			<p class="url">/?lang=es</p>
+            Currently supported languages: <p id="langs"><a href="random-word-api.herokuapp.com/languages">click</a></p>
+        </p>
     </div>
+
+    <script>
+        fetch("random-word-api.herokuapp.com/languages")
+            .then(res => res.json())
+            .then(res => document.getElementById("langs").innerHTML = res)
+    </script>
 </body>
 
 </html>

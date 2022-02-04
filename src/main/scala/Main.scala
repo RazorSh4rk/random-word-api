@@ -6,6 +6,7 @@ import java.net.URI
 import com.redis._
 
 object Main extends cask.MainRoutes {
+	println(Utils.getLanguages())
   override val port: Int = 
     Properties.envOrElse("PORT", "9001").toInt
 
@@ -44,14 +45,36 @@ object Main extends cask.MainRoutes {
     "/templates/index.html"
   }
 
+  @cask.get("/languages")
+  def languages() = {
+	  cask.Response(
+		  Json.stringify(Json.toJson(Utils.getLanguages)),
+		  statusCode = 200,
+		  headers = headers
+	  )
+  }
+
   @cask.get("/all")
-  def getAll(req: cask.Request, swear: Int = 0) = {
+  def getAll(req: cask.Request, lang: String = "en", swear: Int = 0) = {
   	val IP = req.exchange.getSourceAddress.toString
-  	if(checkRateLimit(IP)){
-	    if(swear == 0) 
-	      cask.Response(Json.stringify(words), headers = headers)
-	    else 
-	      cask.Response(Json.stringify( Json.toJson( words.as[List[String]]:::(swearWords.as[List[String]]) ) ) , headers = headers)
+  	if(checkRateLimit(IP)) {
+		if(lang != "en") {
+			val fWords = Utils.getLanguageFileContent(lang.toLowerCase)
+			if(fWords != null) {
+				cask.Response(Json.stringify(fWords), headers = headers)
+			} else {
+				cask.Response(
+					Json.stringify(Json.toJson(Map("Error" -> "No translation for this language"))),
+					statusCode = 403,
+					headers = headers
+				)
+			}
+		} else {
+			if(swear == 0) 
+				cask.Response(Json.stringify(words), headers = headers)
+			else 
+				cask.Response(Json.stringify( Json.toJson( words.as[List[String]]:::(swearWords.as[List[String]]) ) ) , headers = headers)
+		}
     } else cask.Response(
        		Json.stringify(Json.toJson(Map("Error" -> "You hit the rate limit, try again in a few seconds"))),
         	statusCode = 403,
@@ -60,16 +83,33 @@ object Main extends cask.MainRoutes {
   }
 
   @cask.get("/word")
-  def getWord(req: cask.Request, number: Int = 1, swear: Int = 0) = {
+  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", swear: Int = 0) = {
   	val IP = req.exchange.getSourceAddress.toString
   	if(checkRateLimit(IP)){
-	    val r = new Random
-	    var w = words.as[List[String]]
-	    if(swear == 1)
-	      w = w:::swearWords.as[List[String]]
-	    val ret = Random.shuffle(w).take(number)
-	
-	    cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
+		if(lang != "en") {
+			val fWords = Utils.getLanguageFileContent(lang.toLowerCase)
+			if(fWords != null) {
+				val r = new Random
+				var w = fWords.as[List[String]]
+				val ret = Random.shuffle(w).take(number)
+			
+				cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
+			} else {
+				cask.Response(
+					Json.stringify(Json.toJson(Map("Error" -> "No translation for this language"))),
+					statusCode = 403,
+					headers = headers
+				)
+			}
+		} else {
+			val r = new Random
+			var w = words.as[List[String]]
+			if(swear == 1)
+			w = w:::swearWords.as[List[String]]
+			val ret = Random.shuffle(w).take(number)
+		
+			cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
+		}
     } else cask.Response(
     		Json.stringify(Json.toJson(Map("Error" -> "You hit the rate limit, try again in a few seconds"))),
     		statusCode = 403,
