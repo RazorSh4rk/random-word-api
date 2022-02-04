@@ -383,3 +383,5 @@ Feb 04, 2022 5:53:00 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellat
 WARNING: Unmatched cancel notification for request id 3741
 2022.02.04 05:53:14 INFO  compiling random-word-api (1 scala source)[0m
 2022.02.04 05:53:16 INFO  time: compiled random-word-api in 1.85s[0m
+Feb 04, 2022 6:04:42 AM org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+WARNING: Unmatched cancel notification for request id 3796
