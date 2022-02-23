@@ -15,6 +15,8 @@ object Main extends cask.MainRoutes {
 
   val redisUrl = 
     URI.create(Properties.envOrElse("REDIS_URL", "http://localhost:6379"))
+
+  println(s"running on $host:$port with redis url $redisUrl")
  
   val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
   val swearWords = Json.parse(Source.fromFile("swear.json").getLines().mkString)
@@ -23,16 +25,23 @@ object Main extends cask.MainRoutes {
     ("Access-Control-Allow-Origin", "*")
   )
 
+  // put the ip into redis with a 5 sec expiration to prevent DOS
+  // attacks like we had in the past
   val checkRateLimit = (IP: String) => {
-    val redisConnection = new RedisClient(redisUrl)
-  	redisConnection.get(IP) match {
-  		case None => {
-  				redisConnection.set(IP, "limited")
-  				redisConnection.expire(IP, 5)
-  				true
-  			}
-  		case Some(x) => false
-  	}
+	try {
+		val redisConnection = new RedisClient(redisUrl)
+		redisConnection.get(IP) match {
+			case None => {
+					redisConnection.set(IP, "limited")
+					redisConnection.expire(IP, 5)
+					true
+				}
+			case Some(x) => false
+		}
+	} catch {
+		// don't make the app hang is redis is unavailable
+		case e: RuntimeException => true
+	}
   }
 
   @cask.get("/")
