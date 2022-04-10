@@ -67,6 +67,8 @@ object Main extends cask.MainRoutes {
   def getAll(req: cask.Request, lang: String = "en", swear: Int = 0) = {
   	val IP = req.exchange.getSourceAddress.toString
   	if(checkRateLimit(IP)) {
+		// have this separately, english is the most common request and we dont want
+		// to open a file every time for it
 		if(lang != "en") {
 			val fWords = Utils.getLanguageFileContent(lang.toLowerCase)
 			if(fWords != null) {
@@ -92,7 +94,7 @@ object Main extends cask.MainRoutes {
   }
 
   @cask.get("/word")
-  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", swear: Int = 0) = {
+  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", swear: Int = 0, length: Int = -1) = {
   	val IP = req.exchange.getSourceAddress.toString
   	if(checkRateLimit(IP)){
 		if(lang != "en") {
@@ -100,7 +102,11 @@ object Main extends cask.MainRoutes {
 			if(fWords != null) {
 				val r = new Random
 				var w = fWords.as[List[String]]
-				val ret = Random.shuffle(w).take(number)
+				
+				val ret = { 
+					if(length == -1) Random.shuffle(w).take(number)
+					else Random.shuffle(w.filter(_.length == length)).take(number) 
+				}
 			
 				cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
 			} else {
@@ -115,7 +121,10 @@ object Main extends cask.MainRoutes {
 			var w = words.as[List[String]]
 			if(swear == 1)
 			w = w:::swearWords.as[List[String]]
-			val ret = Random.shuffle(w).take(number)
+			val ret = { 
+				if(length == -1) Random.shuffle(w).take(number)
+				else Random.shuffle(w.filter(_.length == length)).take(number) 
+			}
 		
 			cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
 		}
