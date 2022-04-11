@@ -19,7 +19,6 @@ object Main extends cask.MainRoutes {
   println(s"running on $host:$port with redis url $redisUrl")
  
   val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
-  val swearWords = Json.parse(Source.fromFile("swear.json").getLines().mkString)
   val headers = Seq(
     ("content-type", "application/json"),
     ("Access-Control-Allow-Origin", "*")
@@ -54,6 +53,12 @@ object Main extends cask.MainRoutes {
     "/templates/index.html"
   }
 
+  @cask.staticFiles("/js", headers = Seq("Content-Type" -> "text/javascript"))
+  def js() = "/templates/script.js"
+
+  @cask.staticFiles("/css", headers = Seq("Content-Type" -> "text/css"))
+  def css() = "/templates/style.css"
+
   @cask.get("/languages")
   def languages() = {
 	  cask.Response(
@@ -64,7 +69,7 @@ object Main extends cask.MainRoutes {
   }
 
   @cask.get("/all")
-  def getAll(req: cask.Request, lang: String = "en", swear: Int = 0) = {
+  def getAll(req: cask.Request, lang: String = "en") = {
   	val IP = req.exchange.getSourceAddress.toString
   	if(checkRateLimit(IP)) {
 		// have this separately, english is the most common request and we dont want
@@ -81,10 +86,7 @@ object Main extends cask.MainRoutes {
 				)
 			}
 		} else {
-			if(swear == 0) 
-				cask.Response(Json.stringify(words), headers = headers)
-			else 
-				cask.Response(Json.stringify( Json.toJson( words.as[List[String]]:::(swearWords.as[List[String]]) ) ) , headers = headers)
+			cask.Response(Json.stringify(words), headers = headers)
 		}
     } else cask.Response(
        		Json.stringify(Json.toJson(Map("Error" -> "You hit the rate limit, try again in a few seconds"))),
@@ -94,7 +96,7 @@ object Main extends cask.MainRoutes {
   }
 
   @cask.get("/word")
-  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", swear: Int = 0, length: Int = -1) = {
+  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", length: Int = -1) = {
   	val IP = req.exchange.getSourceAddress.toString
   	if(checkRateLimit(IP)){
 		if(lang != "en") {
@@ -119,8 +121,6 @@ object Main extends cask.MainRoutes {
 		} else {
 			val r = new Random
 			var w = words.as[List[String]]
-			if(swear == 1)
-			w = w:::swearWords.as[List[String]]
 			val ret = { 
 				if(length == -1) Random.shuffle(w).take(number)
 				else Random.shuffle(w.filter(_.length == length)).take(number) 
