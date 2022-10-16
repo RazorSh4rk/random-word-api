@@ -1,144 +1,48 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Random word API</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Space+Mono&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="/css">
-</head>
-
-<body>
-  <h2 class="header">Random Word API</h2>
-
-  <ul>
-    <li id="endpoints_btn">Endpoints</li>
-    <li id="parameters_btn">Parameters</li>
-    <li id="license_btn">License</li>
-    <li id="donate_btn">Donate</li>
-  </ul>
-
-  <div class="content">
-    <div id="endpoints">
-      <div>
-        <p class="code">/all</p>
-        Return all stored words. This will be a huge data dump and will take
-        a long time to fetch and will probably slow down your application. <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/all">https://random-word-api.herokuapp.com/all</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/all')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-      <div>
-        <p class="code">/word</p>
-        Return one stored word randomly. Options can be further specified, see the
-        parameters menu. <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/word">https://random-word-api.herokuapp.com/word</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/word')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-      <div>
-        <p class="code">/languages</p>
-        Return a list of stored language codes. Useful if you want a multilanguage app.
-        See Github to find out how to add your own. <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/languages">https://random-word-api.herokuapp.com/languages</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/languages')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-    </div>
-
-    <div id="parameters">
-
-      <div>
-        <p class="code">?number</p>
-        Set number of requested words. If it exceeds the maximum stored amount,
-        it will just return all of them. <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/word?number=10">https://random-word-api.herokuapp.com/word?number=10</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/word?number=10')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-      <div>
-        <p class="code">?length</p>
-        Set length of requested words. This will only return words
-        that contain x amount of letters. <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/word?length=5">https://random-word-api.herokuapp.com/word?length=5</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/word?length=5')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-      <div>
-        <p class="code">?lang</p>
-        Set language of requested words. Go to Github to get more info on how to
-        add your own language. <br />
-        Currently supported languages: 
-        <span class="code" id="langs">
-          <a href="https://random-word-api.herokuapp.com/languages">click</a>
-        </span> <br />
-        Example:
-
-        <p class="url"><a
-            href="https://random-word-api.herokuapp.com/word?lang=es">https://random-word-api.herokuapp.com/word?lang=es</a>
-          <button class="ctrlc" onclick="copy('https://random-word-api.herokuapp.com/word?lang=es')">
-            Ctrl+C
-          </button>
-        </p>
-      </div>
-
-    </div>
-
-    <div id="license">
-      <div>
-        Collection of random words I spent way too long scraping from websites.
-        I didn't find any random word API that was just a request. You can get
-        the
-        <a href="https://github.com/RazorSh4rk/random-word-api">source</a> and
-        host it yourself if you want. It is now running on a hobby dyno, so it
-        should be up quite reliably.
-
-        <br />
-        <a href="https://choosealicense.com/licenses/wtfpl/#">Runs under the DWTFYW license.</a>
-      </div>
-    </div>
-
-    <div id="donate">Not yet but thanks for checking.</div>
-  </div>
-  
-  <script src="/js"></script>
-
-</body>
-
+<html lang="en-US">
+    <head>
+        <title>Random Word API</title>
+        <meta charset="utf-8">
+        <meta name="phone" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="index.css" type="text/css">
+        <noscript><meta http-equiv="refresh" content="0; url=error.html"/></noscript>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <div class="nav">
+            <h2>Random Word API</h2>
+            <h3 onclick="endpoints();">Endpoints</h3>
+            <h3 onclick="parameters();">Parameters</h3>
+            <h3 onclick="about()">About</h3>
+            <h3 onclick="window.location.replace('https://github.com/RazorSh4rk/random-word-api');">Github</h3>
+        </div>
+        <div id="content">
+            <h2>/all</h2>
+            <div class="content-div">
+                <p>Returns all stored words. This is a huge data dump which will probably slow down your application.</p>
+                <div class="content-example">
+                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/all');">https://random-word-api.herokuapp.com/all</p>
+                    <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/all');">Copy</h4>
+                </div>
+            </div>
+            <h2>/word</h2>
+            <div class="content-div">
+                <p>Randomly returns one stored word. Options can be further specified, see the parameters page.</p>
+                <div class="content-example">
+                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/word');">https://random-word-api.herokuapp.com/word</p>
+                    <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/word');">Copy</h4>
+                </div>
+            </div>
+            <h2>/languages</h2>
+            <div class="content-div">
+                <p>Returns a list of stored language codes. Useful if you want a multi-language app. See the Github to find out how to add your own.</p>
+                <div class="content-example">
+                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/languages');">https://random-word-api.herokuapp.com/languages</p>
+                    <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/languages');">Copy</h4>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

@@ -1,0 +1,163 @@
+@charset "UTF-8";
+p, h2, h3, h1, b
+{
+    color: white;
+}
+body
+{
+    background-color: #00303D;
+}
+.nav
+{
+    background-color: #002029;
+    height: 100px;
+}
+.nav h2
+{
+    margin-left: 30px;
+}
+.nav h3
+{
+    margin-left: 15px;
+}
+.nav h3, .nav h2
+{
+    line-height: 100px;
+    margin-right: 15px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.nav h3:hover
+{
+    color: #696969;
+}
+#content
+{
+    margin: 50px;
+}
+#content h2
+{
+    background-color: #005066;
+    width: min-content;
+    margin-bottom: 0;
+    padding: 5px;
+    white-space: pre;
+}
+.content-div
+{
+    background-color: #005066;
+    margin-bottom: 25px;
+}
+.content-div p
+{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.content-example
+{
+    background-color: #00607A;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 15px;
+    display: inline-block;
+    width: 50%;
+}
+.content-example p
+{
+    width: min-content;
+    text-align: center;
+    margin: 0 auto;
+    white-space: nowrap;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.content-example p:hover, .content-example h4:hover, b:hover
+{
+    color: #7a7a7a;
+    cursor: pointer;
+}
+.content-example h4
+{
+    display: flex;
+    float: right;
+    font-size: 20px;
+    color: white;
+    padding: 5px;
+    margin: 0;
+    border-left: 5px solid #005066;
+    border-top: 5px solid #005066;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+b
+{
+    font-weight: normal;
+}
+@media (max-width: 1180px)
+{
+    #content
+    {
+        margin: 10px;
+    }
+    .content-example
+    {
+        background-color: #00607A;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 90%;
+    }
+}
+@media (max-width: 1020px)
+{
+    .nav
+    {
+        height: 200px;
+    }
+}
+@media (max-width: 630px)
+{
+    .content-example p
+    {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 548px)
+{
+    .nav
+    {
+        height: 300px;
+    }
+    #content
+    {
+        margin: 10px;
+    }
+    .content-example
+    {
+        background-color: #00607A;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 15px;
+        display: inline-block;
+        width: 90%;
+    }
+}
+@media (max-width: 510px)
+{
+    .content-example
+    {
+        display: none;
+    }
+}
