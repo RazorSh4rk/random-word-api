@@ -1,5 +1,5 @@
 @charset "UTF-8";
-p, h2, h3, h1, b
+p, h2, h1, b, a
 {
     color: white;
 }
@@ -16,11 +16,11 @@ body
 {
     margin-left: 30px;
 }
-.nav h3
+.nav a
 {
     margin-left: 15px;
 }
-.nav h3, .nav h2
+.nav a, .nav h2
 {
     line-height: 100px;
     margin-right: 15px;
@@ -30,9 +30,9 @@ body
     -ms-user-select: none;
     user-select: none;
 }
-.nav h3:hover
+.nav a:hover
 {
-    color: #696969;
+    color: #696969 !important;
 }
 #content
 {
@@ -51,7 +51,7 @@ body
     background-color: #005066;
     margin-bottom: 25px;
 }
-.content-div p
+.content-div p, .content-div a
 {
     text-align: center;
     padding-top: 15px;
@@ -66,7 +66,7 @@ body
     display: inline-block;
     width: 50%;
 }
-.content-example p
+.content-example a
 {
     width: min-content;
     text-align: center;
@@ -79,7 +79,7 @@ body
     -ms-user-select: none;
     user-select: none;
 }
-.content-example p:hover, .content-example h4:hover, b:hover
+.content-example h4:hover, b:hover, a:hover
 {
     color: #7a7a7a;
     cursor: pointer;
@@ -103,6 +103,22 @@ body
 b
 {
     font-weight: normal;
+}
+.nav a
+{
+    font-size: 20px;
+}
+a
+{
+    color: white !important;
+}
+a:hover
+{
+    text-decoration: unset !important;
+}
+a:visited
+{
+    color: white;
 }
 @media (max-width: 1180px)
 {
@@ -129,7 +145,7 @@ b
 }
 @media (max-width: 630px)
 {
-    .content-example p
+    .content-example a
     {
         font-size: 1rem;
     }

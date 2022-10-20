@@ -59,3 +59,10 @@ function about()
         <p>A thorough collection of words scraped from websites. Self-hosting from the source is supported. It is now running on a hobby dyno, so it should be up quite reliably. Runs under the <b onclick="window.location.replace('https://choosealicense.com/licenses/wtfpl/');">DWTFYW license</b>.</p>
     </div>`;
 }
+function underline(current)
+{
+    document.getElementById("endpoints").style.textDecoration = 'none !important';
+    document.getElementById("parameters").style.textDecoration = 'none !important';
+    document.getElementById("about").style.textDecoration = 'none !important';
+    current.style.textDecoration = 'underline !important';
+}

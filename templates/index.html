@@ -13,17 +13,17 @@
     <body>
         <div class="nav">
             <h2>Random Word API</h2>
-            <h3 onclick="endpoints();">Endpoints</h3>
-            <h3 onclick="parameters();">Parameters</h3>
-            <h3 onclick="about()">About</h3>
-            <h3 onclick="window.location.replace('https://github.com/RazorSh4rk/random-word-api');">Github</h3>
+            <a onclick="endpoints(); underline(this);" id="endpoints" style="text-decoration: underline;">Endpoints</a>
+            <a onclick="parameters(); underline(this);" id="parameters">Parameters</a>
+            <a onclick="about(); underline(this);" id="about">About</a>
+            <a href="https://github.com/RazorSh4rk/random-word-api");">Github</a>
         </div>
         <div id="content">
             <h2>/all</h2>
             <div class="content-div">
                 <p>Returns all stored words. This is a huge data dump which will probably slow down your application.</p>
                 <div class="content-example">
-                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/all');">https://random-word-api.herokuapp.com/all</p>
+                    <a href="https://random-word-api.herokuapp.com/all">https://random-word-api.herokuapp.com/all</a>
                     <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/all');">Copy</h4>
                 </div>
             </div>
@@ -31,7 +31,7 @@
             <div class="content-div">
                 <p>Randomly returns one stored word. Options can be further specified, see the parameters page.</p>
                 <div class="content-example">
-                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/word');">https://random-word-api.herokuapp.com/word</p>
+                    <a href="https://random-word-api.herokuapp.com/word">https://random-word-api.herokuapp.com/word</a>
                     <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/word');">Copy</h4>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="content-div">
                 <p>Returns a list of stored language codes. Useful if you want a multi-language app. See the Github to find out how to add your own.</p>
                 <div class="content-example">
-                    <p onclick="window.location.replace('https://random-word-api.herokuapp.com/languages');">https://random-word-api.herokuapp.com/languages</p>
+                    <a href="https://random-word-api.herokuapp.com/languages">https://random-word-api.herokuapp.com/languages</a>
                     <h4 onclick="navigator.clipboard.writeText('https://random-word-api.herokuapp.com/languages');">Copy</h4>
                 </div>
             </div>
