@@ -9,3 +9,4 @@ You will need scala and sbt for the development
 pacman -S scala sbt
 sbt run
 ```
+
