@@ -1,4 +1,38 @@
-target/*
+# Created by https://www.toptal.com/developers/gitignore/api/bloop,scala,metals,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=bloop,scala,metals,visualstudiocode
+
+### Bloop ###
 .bloop/
+
+### Metals ###
 .metals/
-.vscode/
+project/**/metals.sbt
+
+### Scala ###
+*.class
+*.log
+target/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
+
+# End of https://www.toptal.com/developers/gitignore/api/bloop,scala,metals,visualstudiocode
