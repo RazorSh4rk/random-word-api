@@ -1,106 +1,54 @@
-* {
-  font-family: 'Bitter', serif;
+/* Dark theme styles */
+.dark-theme {
+  background-color: #1a1a1a;
+  color: #fff;
+}
+
+.dark-theme h1 {
+  color: #ff9800;
+}
+
+.dark-theme a {
+  color: #2196f3;
+}
+
+.dark-theme code {
+  background-color: #212121;
+  color: #fff;
+}
+
+.dark-theme pre {
+  background-color: #212121;
+  color: #fff;
+}
+
+.dark-theme pre code {
+  background-color: transparent;
+  color: inherit;
+}
+
+.dark-theme blockquote {
+  border-left-color: #ff9800;
+}
+
+.dark-theme hr {
+  background-color: #fff;
+}
+
+.dark-theme img {
+  filter: invert(100%);
+}
+
+.dark-theme table {
+  border-collapse: collapse;
+}
+
+.dark-theme th,
+.dark-theme td {
+  border: 1px solid #fff;
 }
 
 body {
-  background: #223;
-  color: white;
-  font-size: 110%;
-  line-height: 5vh;
-}
-
-.header {
-  margin: 2px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 4vh 0vw;
-}
-
-.url {
-  padding-top: 3vh;
-  padding-bottom: 3vh;
-  width: 10wv;
+  max-width: 60%;
   margin: auto;
-  background: #334;
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.main {
-  width: 95vw;
-  margin: auto;
-  text-align: center;
-}
-
-.text {
-  width: 100%;
-}
-
-input {
-  padding: 0.5vw;
-  border: 0px;
-  color: white;
-  background: #343;
-  border-radius: 5px;
-}
-
-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 5px;
-  font-family: 'Bitter', serif;
-}
-
-ul {
-  list-style-type: none;
-  margin: 0 0 0 0 ;
-  padding: 0;
-  width: 25%;
-  background-color: #f1f1f1;
-  height: 100%;
-  float: left;
-  overflow: auto;
-}
-
-li {
-  display: block;
-  color: #000;
-  padding: 2vh 0.5vw;
-  text-decoration: none;
-}
-
-li:hover {
-  background-color: #555;
-  color: white;
-}
-
-.content {
-  width: 74%;
-  float: right;
-}
-
-.ctrlc {
-  width: 5vw;
-  height: 5vw;
-  background: none;
-  border: 1px solid white;
-  color: white;
-  border-radius: 5px;
-  margin: 0 1vw;
-}
-
-.ctrlc:hover {
-  border: 1px solid green;
-  color: green;
-}
-
-.code {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Space Mono', monospace;
 }
