@@ -1,24 +1,86 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Random word API</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark light"/>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bitter&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        @media (prefers-color-scheme:dark) {
+            body {
+                background-color: oklab(0.21 0 -0.02);
+                color: oklab(0.89 0 0);
+            }
 
-  <link rel="stylesheet" href="/css">
-  <script src="  https://unpkg.com/showdown/dist/showdown.min.js"></script>
+            h2, h3 {
+                color: white;
+            }
+        }
+
+        h2 {
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        h3 {
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+
+    <title>Random Word API</title>
 </head>
+<body style="margin: 0; padding: 2rem; font-size: 1.125rem; display: flex; flex-direction: column;">
+    <main style="max-width: 600px; margin: 0 auto; width: 100%;">
+        <h1 style="margin: 0; color: #ff9800;">Random Word API</h1>
 
-<body class="dark-theme">
-  <div id="markdown"></div>
-  <script src="/js"></script>
+        <h2>Endpoints</h2>
 
+        <h3><a href="https://random-word-api.herokuapp.com/all">/all</a></h3>
+    
+        <p>Returns all stored words. This will be a huge data dump and will take a long time to fetch and will probably slow down your application.</p>
+    
+        <h3><a href="https://random-word-api.herokuapp.com/word">/word</a></h3>
+
+        <p>Return one stored word randomly. Options can be further specified, see the parameters menu.</p>
+
+        <h3><a href="https://random-word-api.herokuapp.com/languages">/languages</a></h3>
+
+        <p>Return a list of stored language codes. Useful if you want a multilanguage app. See GitHub to find out how to add your own.</p>
+        
+        <h2>Parameters</h2>
+
+        <p>The parameters can be combined.</p>
+
+        <h3>?number</h3>
+
+        <p>Sets the number of requested words. If it exceeds the maximum stored amount, it will just return all of them.</p>
+
+        <p>For example: <a href="https://random-word-api.herokuapp.com/word?number=42">https://random-word-api.herokuapp.com/word?number=42</a> would return 42 words.</p>
+
+        <h3>?length</h3>
+        <p>Sets the length of requested words. This will only return words that contain x amount of letters.</p>
+
+        <p>For example: <a href="https://random-word-api.herokuapp.com/word?length=7">https://random-word-api.herokuapp.com/word?length=7</a> would return a word with a length of seven.</p>
+
+        <h3>?lang</h3>
+        <p>Sets the language of requested words. Currently supported languages:</p>
+
+        <ul>
+            <li>English (just don't provide the parameter)</li>
+            <li>Spanish (?lang=es)</li>
+            <li>Italian (?lang=it)</li>
+            <li>German (?lang=de)</li>
+            <li>French (?lang=it)</li>
+            <li>Chinese (?lang=zh)</li>
+        </ul>
+
+        <p>For example: <a href="https://random-word-api.herokuapp.com/all?lang=zh">https://random-word-api.herokuapp.com/all?lang=zh</a> would return all Chinese words.</p>
+
+        <h2>How To Add You Own language</h2>
+
+        This project is <a href="https://github.com/RazorSh4rk/random-word-api/">on GitHub</a>. File a PR with your favourite language!
+    </main>
 </body>
-
 </html>
