@@ -2,7 +2,7 @@ const fs = require('fs');
 const axios = require('axios');
 const prompt = require("prompt-sync")();
 
-const getFrequencyFromWikipedia = async (word) => {
+const getFrequencyFromWikipedia = async (lang,word) => {
     const url = `https://${lang}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${word}&format=json&origin=*`;
     try {
         const response = await axios.get(url);
@@ -25,7 +25,7 @@ const generateJson = async () => {
 
     for (let i = 0; i < totalWords; i++) {
         const word = jsonData[i];
-        const frequency = await getFrequencyFromWikipedia(word);
+        const frequency = await getFrequencyFromWikipedia(lang,word);
         frequencyData.push({ word, frequency });
         
     }
