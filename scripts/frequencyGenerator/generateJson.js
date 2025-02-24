@@ -14,10 +14,8 @@ const getFrequencyFromWikipedia = async (word) => {
 
 
 const generateJson = async () => {
-    console.log("Enter the language of the words (en, it, fr...): ");
-    let lang = prompt();
-    console.log("Enter the path to the json file: ");
-    let path = prompt();
+    let lang = prompt("Enter the language of the words (en, it, fr...): ");
+    let path = prompt("Enter the path to the json file: ");
     const data = fs.readFileSync(path, 'utf8');
     const jsonData = JSON.parse(data);
 
