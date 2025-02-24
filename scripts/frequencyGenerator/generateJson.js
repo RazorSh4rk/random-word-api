@@ -1,5 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
+const prompt = require("prompt-sync")();
 
 const getFrequencyFromWikipedia = async (word) => {
     const url = `https://${lang}.wikipedia.org/w/api.php?action=query&list=search&srsearch=${word}&format=json&origin=*`;
