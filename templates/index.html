@@ -75,11 +75,27 @@
             <li>French (?lang=fr)</li>
             <li>Chinese (?lang=zh)</li>
             <li>Brazilian Portuguese (?lang=pt-br)</li>
+            <li>Romanian (?lang=ro)</li>
         </ul>
 
         <p>For example: <a href="https://random-word-api.herokuapp.com/all?lang=zh">https://random-word-api.herokuapp.com/all?lang=zh</a> would return all Chinese words.</p>
 
-        <h2>How To Add You Own language</h2>
+        <h3>?diff</h3>
+        <p>Filters words by difficulty/commonality using Wikipedia word frequency data. <strong>Only works when requesting 5 or fewer words.</strong></p>
+
+        <ul>
+            <li><strong>1 = Easy</strong> - Very common words (e.g., "water", "house")</li>
+            <li><strong>2 = Medium-Easy</strong> - Common words</li>
+            <li><strong>3 = Medium</strong> - Moderately common words</li>
+            <li><strong>4 = Medium-Hard</strong> - Uncommon words</li>
+            <li><strong>5 = Hard</strong> - Rare words (e.g., "defenestration")</li>
+        </ul>
+
+        <p>For example: <a href="https://random-word-api.herokuapp.com/word?number=3&diff=1">https://random-word-api.herokuapp.com/word?number=3&diff=1</a> would return 3 easy/common words.</p>
+
+        <p>Combine with other parameters: <a href="https://random-word-api.herokuapp.com/word?number=5&diff=5&lang=es">https://random-word-api.herokuapp.com/word?number=5&diff=5&lang=es</a> would return 5 rare Spanish words.</p>
+
+        <h2>How To Add Your Own Language</h2>
 
         This project is <a href="https://github.com/RazorSh4rk/random-word-api/">on GitHub</a>. File a PR with your favourite language!
     </main>

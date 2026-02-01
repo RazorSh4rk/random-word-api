@@ -1,0 +1,28 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Build artifacts
+target/
+project/target/
+project/project/
+
+# IDE
+.bloop/
+.metals/
+.vscode/
+.idea/
+*.iml
+
+# Scripts (not needed for runtime)
+scripts/
+
+# Documentation
+README.md
+LICENSE.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

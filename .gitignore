@@ -40,3 +40,7 @@ hs_err_pid*
 node_modules/
 
 # End of https://www.toptal.com/developers/gitignore/api/bloop,scala,metals,visualstudiocode
+
+# Environment variables (secrets)
+.env
+.env.*

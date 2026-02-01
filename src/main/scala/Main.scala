@@ -1,57 +1,36 @@
 import play.api.libs.json._
 import scala.io.Source
-import scala.util.Random
 import scala.util.Properties
-import java.net.URI
-import com.redis._
 
 object Main extends cask.MainRoutes {
-	println(Utils.getLanguages())
-  override val port: Int = 
-    Properties.envOrElse("PORT", "9001").toInt
+  override val port: Int = Properties.envOrElse("PORT", "9001").toInt
+  override val host: String = Properties.envOrElse("HOST", "0.0.0.0")
 
-  override val host: String = 
-    Properties.envOrElse("HOST", "0.0.0.0")
+  println(s"Available languages: ${LanguageService.getAvailableLanguages()}")
+  println(s"Running on $host:$port")
 
-  val redisUrl = 
-    URI.create(Properties.envOrElse("REDIS_URL", "http://localhost:6379"))
+  private val englishWords: JsValue =
+    Json.parse(Source.fromFile("words.json").getLines().mkString)
 
-  println(s"running on $host:$port with redis url $redisUrl")
- 
-  val words = Json.parse(Source.fromFile("words.json").getLines().mkString)
-  val headers = Seq(
+  private val jsonHeaders = Seq(
     ("content-type", "application/json"),
     ("Access-Control-Allow-Origin", "*")
   )
 
-  // put the ip into redis with a 5 sec expiration to prevent DOS
-  // attacks like we had in the past
-  val checkRateLimit = (IP: String) => {
-	try {
-		val redisConnection = new RedisClient(redisUrl)
-		redisConnection.get(IP) match {
-			case None => {
-					redisConnection.set(IP, "limited")
-					redisConnection.expire(IP, 5)
-					true
-				}
-			case Some(x) => false
-		}
-	} catch {
-		// don't make the app hang is redis is unavailable
-		case e: RuntimeException => true
-	}
-  }
+  private def jsonResponse(data: JsValue, status: Int = 200) =
+    cask.Response(Json.stringify(data), statusCode = status, headers = jsonHeaders)
+
+  private def errorResponse(message: String, status: Int = 403) =
+    jsonResponse(Json.toJson(Map("Error" -> message)), status)
+
+  private val rateLimitError = errorResponse("You hit the rate limit, try again in a few seconds")
+  private val languageError = errorResponse("No translation for this language")
 
   @cask.get("/")
-  def redir() = {
-    cask.Redirect("/home")
-  }
+  def root() = cask.Redirect("/home")
 
   @cask.staticFiles("/home")
-  def index() = {
-    "/templates/index.html"
-  }
+  def home() = "/templates/index.html"
 
   @cask.staticFiles("/js", headers = Seq("Content-Type" -> "text/javascript"))
   def js() = "/templates/script.js"
@@ -60,98 +39,48 @@ object Main extends cask.MainRoutes {
   def css() = "/templates/style.css"
 
   @cask.get("/languages")
-  def languages() = {
-	  cask.Response(
-		  Json.stringify(Json.toJson(Utils.getLanguages)),
-		  statusCode = 200,
-		  headers = headers
-	  )
-  }
+  def languages() = jsonResponse(Json.toJson(LanguageService.getAvailableLanguages()))
 
   @cask.get("/all")
   def getAll(req: cask.Request, lang: String = "en") = {
-  	val IP = req.exchange.getSourceAddress.toString
-  	if(checkRateLimit(IP)) {
-		// have this separately, english is the most common request and we dont want
-		// to open a file every time for it
-		if(lang != "en") {
-			val fWords = Utils.getLanguageFileContent(lang.toLowerCase)
-			if(fWords != null) {
-				cask.Response(Json.stringify(fWords), headers = headers)
-			} else {
-				cask.Response(
-					Json.stringify(Json.toJson(Map("Error" -> "No translation for this language"))),
-					statusCode = 403,
-					headers = headers
-				)
-			}
-		} else {
-			cask.Response(Json.stringify(words), headers = headers)
-		}
-    } else cask.Response(
-       		Json.stringify(Json.toJson(Map("Error" -> "You hit the rate limit, try again in a few seconds"))),
-        	statusCode = 403,
-       		headers = headers
-    	)
+    val ip = req.exchange.getSourceAddress.toString
+    if (!RateLimiter.check(ip)) {
+      rateLimitError
+    } else {
+      LanguageService.getAllWordsJson(lang, englishWords) match {
+        case Right(words) => jsonResponse(words)
+        case Left(_) => languageError
+      }
+    }
   }
 
   @cask.get("/word")
-  def getWord(req: cask.Request, number: Int = 1, lang: String = "en", length: Int = -1) = {
-  	val IP = req.exchange.getSourceAddress.toString
-  	if(checkRateLimit(IP)){
-		if(lang != "en") {
-			val fWords = Utils.getLanguageFileContent(lang.toLowerCase)
-			if(fWords != null) {
-				val r = new Random
-				var w = fWords.as[List[String]]
-				
-				val ret = { 
-					if(length == -1) Random.shuffle(w).take(number)
-					else Random.shuffle(w.filter(_.length == length)).take(number) 
-				}
-			
-				cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
-			} else {
-				cask.Response(
-					Json.stringify(Json.toJson(Map("Error" -> "No translation for this language"))),
-					statusCode = 403,
-					headers = headers
-				)
-			}
-		} else {
-			val r = new Random
-			var w = words.as[List[String]]
-			val ret = { 
-				if(length == -1) Random.shuffle(w).take(number)
-				else Random.shuffle(w.filter(_.length == length)).take(number) 
-			}
-		
-			cask.Response(Json.stringify(Json.toJson(ret)), headers = headers)
-		}
-    } else cask.Response(
-    		Json.stringify(Json.toJson(Map("Error" -> "You hit the rate limit, try again in a few seconds"))),
-    		statusCode = 403,
-    		headers = headers
-    	)
+  def getWord(
+    req: cask.Request,
+    number: Int = 1,
+    lang: String = "en",
+    length: Int = -1,
+    diff: Int = -1
+  ) = {
+    val ip = req.exchange.getSourceAddress.toString
+    if (!RateLimiter.check(ip)) {
+      rateLimitError
+    } else {
+      LanguageService.getWordsForLanguage(lang, englishWords) match {
+        case Right(words) =>
+          val result = WordService.getRandomWords(words, number, length, lang, diff)
+          jsonResponse(Json.toJson(result))
+        case Left(_) => languageError
+      }
+    }
   }
 
-  // endpoint to check redis entries because i cant do that in heroku
   @cask.get("/redis_dump")
   def redisDump(pass: String) = {
-  	val _pass = scala.util.Properties.envOrElse("PASS", "")
-  	if(pass != "" && pass == _pass) {
-  		val redisConnection = new RedisClient(redisUrl)
-  		val keys: List[String] = redisConnection.keys("*") match {
-  			case None => List()
-  			case Some(x) => {
-  				x.map(el => el match {
-  					case None => ""
-  					case Some(x) => x.toString
-  				})
-  			}
-  		}
-  		keys.mkString("\n")
-  	} else ""
+    RateLimiter.getKeys(pass) match {
+      case Some(keys) => keys.mkString("\n")
+      case None => ""
+    }
   }
 
   initialize()

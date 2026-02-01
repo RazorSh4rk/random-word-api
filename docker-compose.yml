@@ -1,0 +1,57 @@
+services:
+  app:
+    build: .
+    ports:
+      - "9001:9001"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - PORT=9001
+      - HOST=0.0.0.0
+      - REDIS_URL=http://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+  # Development service - mounts source for live reloading
+  app-dev:
+    image: buildo/scala-sbt-alpine:17.0.9_9_2.13.12_1.11.7
+    working_dir: /app
+    volumes:
+      - .:/app
+      - sbt-cache:/root/.sbt
+      - ivy-cache:/root/.ivy2
+      - coursier-cache:/root/.cache/coursier
+    ports:
+      - "9001:9001"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - PORT=9001
+      - HOST=0.0.0.0
+      - REDIS_URL=http://redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
+    command: sbt run
+    profiles:
+      - dev
+
+volumes:
+  sbt-cache:
+  ivy-cache:
+  coursier-cache:
