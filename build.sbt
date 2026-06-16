@@ -1,4 +1,4 @@
-scalaVersion := "2.13.1"
+scalaVersion := "2.13.15"
 
 name := "random-word-api"
 organization := "io.github.razorsh4rk"
