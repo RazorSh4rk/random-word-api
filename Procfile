@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/random-word-api
+web: target/universal/stage/bin/random-word-api -J-Xmx384m
