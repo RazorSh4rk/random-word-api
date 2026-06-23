@@ -106,7 +106,7 @@ object WikipediaFrequency {
   ): Option[List[String]] = {
     import scala.concurrent.ExecutionContext.Implicits.global
 
-    val result = List.newBuilder[String]
+    val result = scala.collection.mutable.ListBuffer.empty[String]
     val iterator = words.iterator
 
     while (result.length < count && iterator.hasNext) {
@@ -139,6 +139,6 @@ object WikipediaFrequency {
       }
     }
 
-    Some(result.result())
+    Some(result.toList)
   }
 }
