@@ -60,7 +60,8 @@ object Main extends cask.MainRoutes {
     number: Int = 1,
     lang: String = "en",
     length: Int = -1,
-    diff: Int = -1
+    diff: Int = -1,
+    seed: Option[Int] = None
   ) = {
     val ip = req.exchange.getSourceAddress.toString
     if (!RateLimiter.check(ip)) {
@@ -68,7 +69,7 @@ object Main extends cask.MainRoutes {
     } else {
       LanguageService.getWordsForLanguage(lang, englishWords) match {
         case Right(words) =>
-          val result = WordService.getRandomWords(words, number, length, lang, diff)
+          val result = WordService.getRandomWords(words, number, length, lang, diff, seed)
           jsonResponse(Json.toJson(result))
         case Left(_) => languageError
       }
