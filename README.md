@@ -70,6 +70,13 @@ Filter words by difficulty/commonality.
     Example:
     https://random-word-api.herokuapp.com/word?number=3&diff=1
 
+### ?seed
+    
+Set seed for the random number generator. Useful if you want reproducible results for the same parameters.
+
+    Example:
+    https://random-word-api.herokuapp.com/word?seed=2026
+
 ---
 
 ## Development

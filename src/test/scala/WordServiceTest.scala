@@ -1,4 +1,5 @@
 import utest._
+import scala.util.Random
 
 object WordServiceTest extends TestSuite {
   val tests = Tests {
@@ -94,14 +95,32 @@ object WordServiceTest extends TestSuite {
     test("shuffleWords") {
       test("returns same size list") {
         val words = List("a", "b", "c", "d", "e")
-        val result = WordService.shuffleWords(words)
+        val rng = new Random(2026)
+        val result = WordService.shuffleWords(words, rng)
         assert(result.size == words.size)
       }
 
       test("contains all original words") {
         val words = List("a", "b", "c", "d", "e")
-        val result = WordService.shuffleWords(words)
+        val rng = new Random(2026)
+        val result = WordService.shuffleWords(words, rng)
         assert(result.sorted == words.sorted)
+      }
+    }
+
+    test("getRandomWords") {
+      test("returns requested number of words") {
+        val words = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+        val result = WordService.getRandomWords(words, 3, -1, "en", -1, None)
+        assert(result.size == 3)
+        assert(result.forall(words.contains))
+      }
+
+      test("returns the same words for the same seed") {
+        val words = List("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+        val result1 = WordService.getRandomWords(words, 3, -1, "en", -1, Some(2026))
+        val result2 = WordService.getRandomWords(words, 3, -1, "en", -1, Some(2026))
+        assert(result1 == result2)
       }
     }
   }

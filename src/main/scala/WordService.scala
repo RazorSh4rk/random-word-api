@@ -10,13 +10,12 @@ object WordService {
    * Pick `count` random elements from `words` without copying the full list.
    * Uses a partial Fisher-Yates shuffle on an array copy.
    */
-  def pickRandom(words: List[String], count: Int): List[String] = {
+  def pickRandom(words: List[String], count: Int, rng: Random): List[String] = {
     val n = count.min(words.length)
     if (n == 0) List.empty
     else if (n >= words.length) words
     else {
       val arr = words.toArray
-      val rng = new Random()
       for (i <- 0 until n) {
         val j = i + rng.nextInt(arr.length - i)
         val tmp = arr(i)
@@ -31,9 +30,8 @@ object WordService {
    * Full shuffle of the word list (used when difficulty filter needs
    * the full shuffled list as fallback).
    */
-  def shuffleWords(words: List[String]): List[String] = {
+  def shuffleWords(words: List[String], rng: Random): List[String] = {
     val arr = words.toArray
-    val rng = new Random()
     for (i <- (arr.length - 1) to 0 by -1) {
       val j = rng.nextInt(i + 1)
       val tmp = arr(i)
@@ -87,16 +85,21 @@ object WordService {
     number: Int,
     length: Int,
     lang: String,
-    diff: Int
+    diff: Int,
+    seed: Option[Int]
   ): List[String] = {
     val filtered = filterByLength(words, length)
+    val rng = seed match {
+      case Some(s) => new Random(s)
+      case None => new Random()
+    }
     if (shouldApplyDifficultyFilter(diff, number)) {
       // difficulty filter needs the full shuffled list for fallback
-      val shuffled = shuffleWords(filtered)
+      val shuffled = shuffleWords(filtered, rng)
       applyDifficultyFilter(shuffled, lang, diff, number)
     } else {
       // fast path: pick random elements without full shuffle
-      pickRandom(filtered, number)
+      pickRandom(filtered, number, rng)
     }
   }
 }
